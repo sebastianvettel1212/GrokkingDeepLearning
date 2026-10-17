@@ -39,8 +39,7 @@ Repositori ini dibuat untuk **Tugas 2 (Enrichment for Deep Learning Classes): Co
 ```
 Grokking Deep Learning/
 ├── README.md
-└── notebooks/
-    ├── 01_Introducing_Deep_Learning.ipynb
+└── ├── 01_Introducing_Deep_Learning.ipynb
     ├── 02_Fundamental_Concepts.ipynb
     ├── 03_Forward_Propagation.ipynb
     ├── 04_Gradient_Descent.ipynb
@@ -70,7 +69,7 @@ Setiap bab diakhiri **tanya-jawab konsep** dan **latihan mandiri beserta jawaban
 
 ## Bab 1 — Introducing Deep Learning
 
-📓 [`01_Introducing_Deep_Learning.ipynb`](notebooks/01_Introducing_Deep_Learning.ipynb)
+📓 [`01_Introducing_Deep_Learning.ipynb`](01_Introducing_Deep_Learning.ipynb)
 
 Bab motivasi: **mengapa** deep learning layak dipelajari, **mengapa** buku ini berbeda, dan **apa** yang dibutuhkan untuk mulai.
 
@@ -98,7 +97,7 @@ Bab motivasi: **mengapa** deep learning layak dipelajari, **mengapa** buku ini b
 
 ## Bab 2 — Fundamental Concepts
 
-📓 [`02_Fundamental_Concepts.ipynb`](notebooks/02_Fundamental_Concepts.ipynb)
+📓 [`02_Fundamental_Concepts.ipynb`](02_Fundamental_Concepts.ipynb)
 
 *How do machines learn?* — memetakan lanskap machine learning, disertai ilustrasi kode kecil untuk tiap konsep.
 
@@ -126,7 +125,7 @@ Bab motivasi: **mengapa** deep learning layak dipelajari, **mengapa** buku ini b
 
 ## Bab 3 — Forward Propagation
 
-📓 [`03_Forward_Propagation.ipynb`](notebooks/03_Forward_Propagation.ipynb)
+📓 [`03_Forward_Propagation.ipynb`](03_Forward_Propagation.ipynb)
 
 Langkah pertama siklus belajar: **predict**.
 
@@ -152,7 +151,7 @@ Langkah pertama siklus belajar: **predict**.
 
 ## Bab 4 — Gradient Descent
 
-📓 [`04_Gradient_Descent.ipynb`](notebooks/04_Gradient_Descent.ipynb)
+📓 [`04_Gradient_Descent.ipynb`](04_Gradient_Descent.ipynb)
 
 Langkah **compare** dan **learn**: algoritma belajar terpenting dalam deep learning.
 
@@ -179,7 +178,7 @@ Langkah **compare** dan **learn**: algoritma belajar terpenting dalam deep learn
 
 ## Bab 5 — Generalizing Gradient Descent
 
-📓 [`05_Generalizing_Gradient_Descent.ipynb`](notebooks/05_Generalizing_Gradient_Descent.ipynb)
+📓 [`05_Generalizing_Gradient_Descent.ipynb`](05_Generalizing_Gradient_Descent.ipynb)
 
 Gradient descent untuk **banyak bobot sekaligus**.
 
@@ -204,7 +203,7 @@ Gradient descent untuk **banyak bobot sekaligus**.
 
 ## Bab 6 — Backpropagation
 
-📓 [`06_Backpropagation.ipynb`](notebooks/06_Backpropagation.ipynb)
+📓 [`06_Backpropagation.ipynb`](06_Backpropagation.ipynb)
 
 Membangun **deep neural network pertama** pada *streetlight problem*.
 
@@ -232,7 +231,7 @@ Membangun **deep neural network pertama** pada *streetlight problem*.
 
 ## Bab 7 — How to Picture Neural Networks
 
-📓 [`07_How_To_Picture_Neural_Networks.ipynb`](notebooks/07_How_To_Picture_Neural_Networks.ipynb)
+📓 [`07_How_To_Picture_Neural_Networks.ipynb`](07_How_To_Picture_Neural_Networks.ipynb)
 
 Bab konseptual tentang **menyederhanakan cara membayangkan jaringan**. Buku tidak menyertakan kode untuk bab ini, sehingga seluruh kode di notebook adalah ilustrasi (berlabel "Tambahan").
 
@@ -259,7 +258,7 @@ Bab konseptual tentang **menyederhanakan cara membayangkan jaringan**. Buku tida
 
 ## Bab 8 — Regularization and Batching
 
-📓 [`08_Regularization_and_Batching.ipynb`](notebooks/08_Regularization_and_Batching.ipynb)
+📓 [`08_Regularization_and_Batching.ipynb`](08_Regularization_and_Batching.ipynb)
 
 Jaringan menghadapi data nyata (MNIST) dan **menghafal** data latih; bab ini mengajarkan cara mencegahnya.
 
@@ -287,7 +286,7 @@ Jaringan menghadapi data nyata (MNIST) dan **menghafal** data latih; bab ini men
 
 ## Bab 9 — Activation Functions
 
-📓 [`09_Activation_Functions.ipynb`](notebooks/09_Activation_Functions.ipynb)
+📓 [`09_Activation_Functions.ipynb`](09_Activation_Functions.ipynb)
 
 Fungsi apa yang sebaiknya dipasang pada keluaran sebuah layer, dan bagaimana memodelkan probabilitas.
 
@@ -315,7 +314,7 @@ Fungsi apa yang sebaiknya dipasang pada keluaran sebuah layer, dan bagaimana mem
 
 ## Bab 10 — Convolutional Neural Networks
 
-📓 [`10_Convolutional_Neural_Networks.ipynb`](notebooks/10_Convolutional_Neural_Networks.ipynb)
+📓 [`10_Convolutional_Neural_Networks.ipynb`](10_Convolutional_Neural_Networks.ipynb)
 
 Menggunakan ulang bobot yang sama di banyak posisi: **convolutional layer**, dibangun dari nol dengan NumPy.
 

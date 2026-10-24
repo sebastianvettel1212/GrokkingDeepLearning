@@ -1,14 +1,14 @@
-# Grokking Deep Learning — Bab 1–10
+# Grokking Deep Learning — Bab 1–15
 
-|           |                         |
-| --------- | ----------------------- |
-| **Nama**  | Zacky Yusup Hakim       |
-| **NIM**   | 101032300183            |
-| **Kelas** | BS1TK-47-REG-G13        |
+|           |                   |
+|-----------|-------------------|
+| **Nama**  | Zacky Yusup Hakim |
+| **NIM**   | 101032300183      |
+| **Kelas** | BS1TK-47-REG-G13  |
 
-Repositori ini berisi rangkuman dan implementasi kode Python untuk **Bab 1 sampai Bab 10** dari buku *Grokking Deep Learning* (Andrew W. Trask, Manning, 2019). Setiap bab disajikan dalam satu Jupyter Notebook yang menggabungkan penjelasan konsep (Bahasa Indonesia) dengan contoh kode, visualisasi, dan ringkasan. Seluruh output sudah tersimpan di notebook, sehingga dapat dibaca tanpa dijalankan ulang.
+Repositori ini berisi rangkuman dan implementasi kode Python untuk **Bab 1 sampai Bab 15** dari buku *Grokking Deep Learning* (Andrew W. Trask, Manning, 2019). Setiap bab disajikan dalam satu Jupyter Notebook yang menggabungkan penjelasan konsep (Bahasa Indonesia) dengan contoh kode, visualisasi, dan ringkasan. Seluruh output sudah tersimpan di notebook, sehingga dapat dibaca tanpa dijalankan ulang.
 
-Sesuai filosofi buku, semua neural network dibangun **dari nol hanya dengan NumPy**, mulai dari satu bobot, *gradient descent*, deep neural network pertama dengan *backpropagation*, hingga regularisasi, fungsi aktivasi, dan *convolutional neural network* pada dataset MNIST.
+Sesuai filosofi buku, semua neural network dibangun **dari nol hanya dengan NumPy**, mulai dari satu bobot, *gradient descent*, deep neural network pertama dengan *backpropagation*, regularisasi, fungsi aktivasi, *convolutional neural network* pada MNIST, hingga NLP, RNN/LSTM, framework autograd buatan sendiri, dan *federated learning*.
 
 Repositori ini dibuat untuk **Tugas 2 (Enrichment for Deep Learning Classes): Code Reproduction + Theoretical Deep-Dive**.
 
@@ -28,9 +28,14 @@ Repositori ini dibuat untuk **Tugas 2 (Enrichment for Deep Learning Classes): Co
 10. [Bab 8 — Regularization and Batching](#bab-8--regularization-and-batching)
 11. [Bab 9 — Activation Functions](#bab-9--activation-functions)
 12. [Bab 10 — Convolutional Neural Networks](#bab-10--convolutional-neural-networks)
-13. [Dataset](#dataset)
-14. [Library yang Digunakan](#library-yang-digunakan)
-15. [Referensi](#referensi)
+13. [Bab 11 — Neural Networks That Understand Language](#bab-11--neural-networks-that-understand-language)
+14. [Bab 12 — Neural Networks That Write Like Shakespeare (RNN)](#bab-12--neural-networks-that-write-like-shakespeare-rnn)
+15. [Bab 13 — Introducing Automatic Optimization (Framework)](#bab-13--introducing-automatic-optimization-framework)
+16. [Bab 14 — Learning to Write Like Shakespeare (LSTM)](#bab-14--learning-to-write-like-shakespeare-lstm)
+17. [Bab 15 — Federated Learning](#bab-15--federated-learning)
+18. [Dataset](#dataset)
+19. [Library yang Digunakan](#library-yang-digunakan)
+20. [Referensi](#referensi)
 
 ---
 
@@ -39,29 +44,35 @@ Repositori ini dibuat untuk **Tugas 2 (Enrichment for Deep Learning Classes): Co
 ```
 Grokking Deep Learning/
 ├── README.md
-└── ├── 01_Introducing_Deep_Learning.ipynb
-    ├── 02_Fundamental_Concepts.ipynb
-    ├── 03_Forward_Propagation.ipynb
-    ├── 04_Gradient_Descent.ipynb
-    ├── 05_Generalizing_Gradient_Descent.ipynb
-    ├── 06_Backpropagation.ipynb
-    ├── 07_How_To_Picture_Neural_Networks.ipynb
-    ├── 08_Regularization_and_Batching.ipynb
-    ├── 09_Activation_Functions.ipynb
-    └── 10_Convolutional_Neural_Networks.ipynb
+├── 01_Introducing_Deep_Learning.ipynb
+├── 02_Fundamental_Concepts.ipynb
+├── 03_Forward_Propagation.ipynb
+├── 04_Gradient_Descent.ipynb
+├── 05_Generalizing_Gradient_Descent.ipynb
+├── 06_Backpropagation.ipynb
+├── 07_How_To_Picture_Neural_Networks.ipynb
+├── 08_Regularization_and_Batching.ipynb
+├── 09_Activation_Functions.ipynb
+├── 10_Convolutional_Neural_Networks.ipynb
+├── 11_Neural_Networks_That_Understand_Language.ipynb
+├── 12_Neural_Networks_That_Write_Like_Shakespeare_RNN.ipynb
+├── 13_Introducing_Automatic_Optimization_Framework.ipynb
+├── 14_Learning_To_Write_Like_Shakespeare_LSTM.ipynb
+└── 15_Federated_Learning.ipynb
 ```
 
 ## Instalasi & Cara Menjalankan
 
 ```
 pip install numpy matplotlib scikit-learn jupyter
-cd notebooks
 jupyter notebook
 ```
 
 Bab 1–7 memakai data mainan yang didefinisikan langsung di notebook (Bab 5 juga memakai dataset digit bawaan `scikit-learn` untuk satu ilustrasi). **Bab 8–10 memakai dataset MNIST** yang dimuat oleh fungsi `load_mnist()` di tiap notebook: fungsi ini mencoba `keras.datasets.mnist` lebih dulu (seperti di buku), dan bila Keras tidak tersedia, mengunduh salinan MNIST dari GitHub secara otomatis (diperlukan koneksi internet saat pertama kali). Pada Google Colab, Keras sudah tersedia.
 
-**Perkiraan waktu menjalankan** (CPU biasa): Bab 8 ≈ 6–8 menit, Bab 9 ≈ 4 menit, Bab 10 ≈ 3–4 menit; Bab lainnya hanya beberapa detik.
+**Bab 11, 12, 14, dan 15** mencoba mengunduh dataset asli (IMDB, bAbI, Shakespeare, email spam Enron). Bila tidak ada koneksi internet, notebook otomatis memakai **data sintetis atau kutipan domain publik** agar tetap berjalan; sumber data yang dipakai selalu dicetak pada output sel pemuatan data. Bab 13 hanya memakai data mainan. Bab 15 memakai enkripsi Paillier yang ditulis sendiri (tanpa pustaka tambahan; kunci 256-bit hanya untuk demonstrasi).
+
+**Perkiraan waktu menjalankan** (CPU biasa): Bab 8 ≈ 6–8 menit, Bab 9 ≈ 4 menit, Bab 10 ≈ 3–4 menit; Bab 11–15 dengan data cadangan masing-masing kurang dari 1 menit (dengan data asli akan lebih lama); Bab lainnya hanya beberapa detik.
 
 Setiap bab diakhiri **tanya-jawab konsep** dan **latihan mandiri beserta jawabannya**. Sel yang berlabel **"Tambahan"** adalah contoh pelengkap yang tidak ada di kode buku. Bab 1 dan Bab 2 hampir tidak memiliki kode di buku (bab pengantar dan konseptual), sehingga ilustrasi kodenya berlabel "Tambahan".
 
@@ -336,14 +347,139 @@ Menggunakan ulang bobot yang sama di banyak posisi: **convolutional layer**, dib
 
 ---
 
+## Bab 11 — Neural Networks That Understand Language
+
+📓 [`11_Neural_Networks_That_Understand_Language.ipynb`](11_Neural_Networks_That_Understand_Language.ipynb)
+
+NLP dengan jaringan saraf: mengubah teks menjadi vektor, memprediksi sentimen ulasan film, dan membaca makna dari embedding.
+
+**Materi:**
+
+1. Memuat ulasan film (IMDB) dan *one-hot encoding* / *bag of words*
+2. Jaringan sentimen dengan *embedding layer* (kode buku)
+3. Bukti: embedding layer = perkalian one-hot (selisih ≈ 1e-16) dan perbandingan kecepatan
+4. Menafsirkan output: kata paling mirip dan kata paling positif/negatif
+5. *Fill in the blank* dengan *negative sampling*: makna kata berasal dari loss
+6. Visualisasi embedding (PCA) dan analogi kata (`king − man + woman`)
+7. Tanya-jawab konsep dan latihan mandiri (dengan jawaban)
+
+**Rangkuman:**
+
+- *Bag of words* mengubah teks berpanjang bervariasi menjadi vektor tetap; embedding layer = memilih dan menjumlahkan baris bobot (≈ 200× lebih cepat daripada perkalian penuh pada matriks 70.000 × 100).
+- Pada data sintetis (output tersimpan), akurasi uji sentimen ≈ 99,3%; kata dengan polaritas sama berembedding mirip.
+- Tugas *fill in the blank* membuat embedding berbasis konteks; loss menentukan apa yang dipelajari jaringan.
+
+---
+
+## Bab 12 — Neural Networks That Write Like Shakespeare (RNN)
+
+📓 [`12_Neural_Networks_That_Write_Like_Shakespeare_RNN.ipynb`](12_Neural_Networks_That_Write_Like_Shakespeare_RNN.ipynb)
+
+*Recurrent neural network* untuk data berpanjang sembarang.
+
+**Materi:**
+
+1. Batas *bag of words*: penjumlahan embedding tidak peka urutan (dibuktikan)
+2. Matriks identitas → matriks transisi yang dipelajari
+3. *Forward propagation* "red sox defeat → yankees" (kode buku)
+4. Data bAbI, *forward*, *backprop*, dan update bobot untuk panjang sembarang (kode buku)
+5. Analisis output: *perplexity*, prediksi kata berikutnya, perubahan matriks transisi
+6. Tanya-jawab konsep dan latihan mandiri (dengan jawaban)
+
+**Rangkuman:**
+
+- Matriks transisi yang dipelajari membuat vektor kalimat peka urutan; bobot yang sama dipakai di setiap langkah.
+- Pada data sintetis bergaya bAbI, perplexity turun dari ≈ 16 (tebakan acak) menjadi ≈ 2,9 (batas teoretis ≈ 2,5).
+- Learning rate ≥ 0,005 membuat pelatihan meledak (NaN): contoh nyata *exploding gradient*. Indeks `hidden_delta` pada kode buku bersifat aproksimasi, tetapi pelatihan tetap konvergen.
+
+---
+
+## Bab 13 — Introducing Automatic Optimization (Framework)
+
+📓 [`13_Introducing_Automatic_Optimization_Framework.ipynb`](13_Introducing_Automatic_Optimization_Framework.ipynb)
+
+Membangun framework deep learning mini dengan **autograd**.
+
+**Materi:**
+
+1. `Tensor` dengan `creators`, `creation_op`, dan `backward()`
+2. Tensor yang dipakai berkali-kali (`children`)
+3. Operasi `add, neg, sub, mul, sum, expand, transpose, mm` + verifikasi gradien numerik
+4. Melatih jaringan dengan autograd, `SGD`, `Layer`, `Linear`, `Sequential`, `MSELoss`
+5. `Tanh`, `Sigmoid`, `Embedding` (`index_select`), `CrossEntropyLoss`
+6. `RNNCell` dan melatih RNN dengan framework sendiri
+7. Tanya-jawab konsep dan latihan mandiri (dengan jawaban)
+
+**Rangkuman:**
+
+- Autograd menyusun grafik komputasi dan menerapkan aturan rantai; selisih gradien autograd vs numerik ≈ 1e-9.
+- `Sequential[Linear, Tanh, Linear, Sigmoid]` mempelajari data XOR-like (loss 1,73 → 0,0007).
+- `RNNCell` buatan sendiri mencapai akurasi *next-word* ≈ 92,7% pada teks berulang yang butuh memori. Gradien `cross_entropy` dibagi ukuran batch (buku tidak membagi), sehingga learning rate berbeda.
+
+---
+
+## Bab 14 — Learning to Write Like Shakespeare (LSTM)
+
+📓 [`14_Learning_To_Write_Like_Shakespeare_LSTM.ipynb`](14_Learning_To_Write_Like_Shakespeare_LSTM.ipynb)
+
+Model bahasa karakter, *truncated backpropagation*, dan LSTM.
+
+**Materi:**
+
+1. Framework Bab 13 (disertakan ulang)
+2. Data teks, *batching*, dan *truncated backpropagation*
+3. Model bahasa karakter dengan `RNNCell` dan pembangkitan sampel teks
+4. *Vanishing* vs *exploding gradient* (demo sigmoid dan ReLU)
+5. *Forget/input/output gate* dan *cell state* (+ ilustrasi memori)
+6. `LSTMCell` dan pelatihan LSTM; perbandingan RNN vs LSTM
+7. Tanya-jawab konsep dan latihan mandiri (dengan jawaban)
+
+**Rangkuman:**
+
+- Gradien sigmoid menciut hingga ≈ 1e-14 dalam 10 langkah, sedangkan gradien ReLU membesar menjadi ≈ 1e6 (pada demo buku).
+- LSTM mempertahankan memori (f = 1, i = 0 → 1,0 setelah 50 langkah; RNN → 0,005).
+- Pada korpus kecil (≈ 800 karakter, kutipan domain publik): loss latih RNN ≈ 0,58 vs LSTM ≈ 0,002 setelah 300 epoch. Hasil ini menunjukkan kapasitas memori, bukan kemampuan menulis teks baru (LSTM cenderung menghafal).
+
+---
+
+## Bab 15 — Federated Learning
+
+📓 [`15_Federated_Learning.ipynb`](15_Federated_Learning.ipynb)
+
+Deep learning pada data yang tidak boleh dikumpulkan, serta privasinya.
+
+**Materi:**
+
+1. Masalah privasi dan model deteksi spam (framework Bab 13)
+2. Federated learning: tiga pengguna, server merata-ratakan bobot
+3. Meretas federated learning: kata email bocor dari pembaruan bobot
+4. *Secure aggregation*
+5. *Homomorphic encryption* (Paillier, implementasi mainan) dan federated learning terenkripsi
+6. Tanya-jawab konsep dan latihan mandiri (dengan jawaban)
+
+**Rangkuman:**
+
+- Pada data sintetis, akurasi uji federated (3 ronde) ≈ 99,8% = model terpusat.
+- Dari satu pembaruan bobot, seluruh kata dalam email Bob berhasil direkonstruksi.
+- Penjumlahan ciphertext Paillier terdekripsi sama dengan penjumlahan biasa (selisih ≈ 4e-7 akibat pembulatan fixed point).
+
+---
+
 ## Dataset
 
-| Bab    | Dataset                                                   | Sumber                          |
-| ------ | --------------------------------------------------------- | ------------------------------- |
-| 1–4, 6 | Data mainan (toes/wlrec/nfans, streetlight, dll.)         | Didefinisikan di notebook       |
-| 5      | Data mainan; dataset digit 8×8 (ilustrasi tambahan)       | Notebook / `sklearn.datasets`   |
-| 7      | Data *streetlight* (dari Bab 6)                           | Didefinisikan di notebook       |
-| 8–10   | MNIST (60.000 latih, 10.000 uji; 1.000 gambar pertama dipakai melatih) | `keras.datasets.mnist` atau salinan GitHub (otomatis) |
+| Bab    | Dataset                                                                | Sumber                                                                 |
+|--------|------------------------------------------------------------------------|------------------------------------------------------------------------|
+| 1–4, 6 | Data mainan (toes/wlrec/nfans, streetlight, dll.)                      | Didefinisikan di notebook                                              |
+| 5      | Data mainan; dataset digit 8×8 (ilustrasi tambahan)                    | Notebook / `sklearn.datasets`                                          |
+| 7      | Data *streetlight* (dari Bab 6)                                        | Didefinisikan di notebook                                              |
+| 8–10   | MNIST (60.000 latih, 10.000 uji; 1.000 gambar pertama dipakai melatih) | `keras.datasets.mnist` atau salinan GitHub (otomatis)                  |
+| 11     | Ulasan film IMDB (25.000 di buku)                                      | `reviews.txt`/`labels.txt` atau korpus sintetis otomatis               |
+| 12     | bAbI (qa1)                                                             | Unduhan resmi atau cerita sintetis otomatis                            |
+| 13     | Data mainan                                                            | Didefinisikan di notebook                                              |
+| 14     | Shakespeare                                                            | `shakespeare.txt` atau kutipan domain publik tertanam                  |
+| 15     | Email spam/ham Enron                                                   | `spam.txt`/`ham.txt` atau email sintetis otomatis                      |
+
+> Output tersimpan pada Bab 11, 12, 14, dan 15 berasal dari data cadangan (sintetis / kutipan domain publik); sumber yang dipakai tercetak di output tiap notebook. Menjalankan ulang dengan koneksi internet akan memakai data asli dan menghasilkan angka berbeda.
 
 ## Library yang Digunakan
 
@@ -352,5 +488,5 @@ Menggunakan ulang bobot yang sama di banyak posisi: **convolutional layer**, dib
 ## Referensi
 
 - Trask, A. W. (2019). *Grokking Deep Learning*. Manning Publications.
-- Repositori kode resmi: <https://github.com/iamtrask/Grokking-Deep-Learning>
-- Salinan MNIST cadangan: <https://github.com/mnielsen/neural-networks-and-deep-learning> (berkas `data/mnist.pkl.gz`)
+- Repositori kode resmi: [https://github.com/iamtrask/Grokking-Deep-Learning](https://github.com/iamtrask/Grokking-Deep-Learning)
+- Salinan MNIST cadangan: [https://github.com/mnielsen/neural-networks-and-deep-learning](https://github.com/mnielsen/neural-networks-and-deep-learning) (berkas `data/mnist.pkl.gz`)
